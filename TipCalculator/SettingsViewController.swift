@@ -8,10 +8,19 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UITableViewController {
+//    @IBOutlet weak var firstPercentageField: UITextField!
+//    @IBOutlet weak var secondPercentageField: UITextField!
+//    @IBOutlet weak var thirdPercentageField: UITextField!
+//    
+//    @IBOutlet weak var firstAnimationLabel: UILabel!
+//    @IBOutlet weak var secondAnimationLabel: UILabel!
+    
     @IBOutlet weak var firstPercentageField: UITextField!
     @IBOutlet weak var secondPercentageField: UITextField!
     @IBOutlet weak var thirdPercentageField: UITextField!
+    
+    @IBOutlet weak var nightModeSwitch: UISwitch!
     
     @IBOutlet weak var firstAnimationLabel: UILabel!
     @IBOutlet weak var secondAnimationLabel: UILabel!
