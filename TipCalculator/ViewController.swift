@@ -73,14 +73,16 @@ class ViewController: UIViewController {
             Double(secondPercentage) / 100.0,
             Double(thirdPercentage) / 100.0]
         
-        
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
         
         let billAmount = NSString(string: billField.text!).doubleValue
         let tip = billAmount * tipPercentages[tipControl.selectedSegmentIndex]
         let total = billAmount + tip
         
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+        
+        tipLabel.text = formatter.stringFromNumber(tip)
+        totalLabel.text = formatter.stringFromNumber(total)
     }
     
 	

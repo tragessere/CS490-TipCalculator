@@ -30,7 +30,6 @@ class SettingsViewController: UIViewController {
         secondPercentage = defaults.integerForKey(Constants.userSecond)
         thirdPercentage = defaults.integerForKey(Constants.userThird)
         
-        
         //If the values haven't been set, use default values
         //(It is possible that the user could set the values to zero,
         // but why bother using the app then?)
