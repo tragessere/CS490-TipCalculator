@@ -14,6 +14,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
     
+    @IBOutlet var backgroundView: UIView!
+    @IBOutlet weak var billLabel: UILabel!
+    @IBOutlet weak var tipStaticLabel: UILabel!
+    @IBOutlet weak var dividerView: UIView!
+    @IBOutlet weak var totalStaticLabel: UILabel!
+    
+    
+    
     var firstPercentage: Int = 0
     var secondPercentage: Int = 0
     var thirdPercentage: Int = 0
@@ -36,6 +44,8 @@ class ViewController: UIViewController {
     @IBAction func onEditingChanged(sender: AnyObject) {
         //Update the tip values whenever the user types a new value to billField
         calculateTip()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        setNightMode(defaults.boolForKey(Constants.userNight))
     }
 
     //We want to load the user-defined percentages here instead of viewDidLoad() becase
@@ -66,6 +76,7 @@ class ViewController: UIViewController {
         
         //Recalculate tips with the user's new percentage choices
         calculateTip()
+        setNightMode(defaults.boolForKey(Constants.userNight))
     }
     
     func calculateTip() {
@@ -85,6 +96,33 @@ class ViewController: UIViewController {
         totalLabel.text = formatter.stringFromNumber(total)
     }
     
+    func setNightMode(nightModeEnabled: Bool) {
+        if nightModeEnabled {
+            self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+            backgroundView.backgroundColor = UIColor.blackColor()
+            billLabel.textColor = UIColor.whiteColor()
+            billField.textColor = UIColor.whiteColor()
+            billField.keyboardAppearance = UIKeyboardAppearance.Dark
+            billField.backgroundColor = UIColor.darkGrayColor()
+            tipStaticLabel.textColor = UIColor.whiteColor()
+            tipLabel.textColor = UIColor.whiteColor()
+            dividerView.backgroundColor = UIColor.whiteColor()
+            totalStaticLabel.textColor = UIColor.whiteColor()
+            totalLabel.textColor = UIColor.whiteColor()
+        } else {
+            self.navigationController?.navigationBar.barStyle = UIBarStyle.Default
+            backgroundView.backgroundColor = UIColor.whiteColor()
+            billLabel.textColor = UIColor.darkTextColor()
+            billField.textColor = UIColor.darkTextColor()
+            billField.keyboardAppearance = UIKeyboardAppearance.Default
+            billField.backgroundColor = UIColor.whiteColor()
+            tipStaticLabel.textColor = UIColor.darkTextColor()
+            tipLabel.textColor = UIColor.darkTextColor()
+            dividerView.backgroundColor = UIColor.darkTextColor()
+            totalStaticLabel.textColor = UIColor.darkTextColor()
+            totalLabel.textColor = UIColor.darkTextColor()
+        }
+    }
 	
     
     @IBAction func onTap(sender: AnyObject) {

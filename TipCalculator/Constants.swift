@@ -15,6 +15,7 @@ class Constants {
     static let userFirst: String = "FirstPercentage"
     static let userSecond: String = "SecondPercentage"
     static let userThird: String = "ThirdPercentage"
+    static let userNight: String = "NightMode"
     
     static let defaultFirst: Int = 18
     static let defaultSecond: Int = 20
