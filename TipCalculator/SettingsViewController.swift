@@ -13,6 +13,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var secondPercentageField: UITextField!
     @IBOutlet weak var thirdPercentageField: UITextField!
     
+    @IBOutlet weak var firstAnimationLabel: UILabel!
+    @IBOutlet weak var secondAnimationLabel: UILabel!
     
     var firstPercentage: Int = 0
     var secondPercentage: Int = 0
@@ -48,22 +50,23 @@ class SettingsViewController: UIViewController {
         
         
     }
+    
+    @IBAction func onTapAnimate(sender: AnyObject) {
+        let startAlphaOne = firstAnimationLabel.alpha
+        let startAlphaTwo = secondAnimationLabel.alpha
+        
+        UIView.animateWithDuration(0.4, animations: {
+            self.firstAnimationLabel.alpha = 1 - startAlphaOne
+            self.secondAnimationLabel.alpha = 1 - startAlphaTwo
+        })
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     //Save all user preferences when leaving view
     override func viewWillDisappear(animated: Bool) {
@@ -78,4 +81,14 @@ class SettingsViewController: UIViewController {
     @IBAction func onBackgroundTap(sender: AnyObject) {
         self.view.endEditing(true)
     }
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
 }
